@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import styleable from 'react-styleable'
 
-import styles from './nav-styles.js'
+import css from './nav.module.css'
 
-function getPrevStyles(props) {
-  return props.hasPrevious ? styles.prev : styles.prevHidden
+function getPrevClassName(props) {
+  return props.hasPrevious ? props.css.prev : props.css.prevHidden
 }
 
-function getNextStyles(props) {
-  return props.hasNext ? styles.next : styles.nextHidden
+function getNextClassName(props) {
+  return props.hasNext ? props.css.next : props.css.nextHidden
 }
 
 function Nav(props) {
   return (
-    <div style={styles.root}>
-      <button style={getPrevStyles(props)} onClick={props.onPrevious}>
+    <div className={props.css.root}>
+      <button className={getPrevClassName(props)} onClick={props.onPrevious}>
         &#10094;
       </button>
-      <button style={getNextStyles(props)} onClick={props.onNext}>
+      <button className={getNextClassName(props)} onClick={props.onNext}>
         &#10095;
       </button>
     </div>
@@ -31,4 +32,4 @@ Nav.propTypes = {
   hasNext: PropTypes.bool
 }
 
-export default Nav
+export default styleable(css)(Nav)

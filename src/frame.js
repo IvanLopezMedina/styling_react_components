@@ -1,7 +1,10 @@
 import React from 'react'
+import styleable from 'react-styleable'
 
-import styles from './frame-styles.js'
+import css from './frame.module.css'
 
-export default function Frame({ children }) {
-  return <div style={styles.root}>{children}</div>
+function Frame(props) {
+  return <div className={props.css.root}>{props.children}</div>
 }
+
+export default styleable(css)(Frame)

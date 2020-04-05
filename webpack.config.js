@@ -33,6 +33,22 @@ module.exports = {
         test: /\.jpg/,
         loaders: ['file-loader'],
         include
+      },
+      {
+        test: /\.module\.css/,
+        loaders: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]---[hash:base64:5]',
+              importLoaders: 1
+            }
+          },
+          'postcss-loader'
+        ],
+        include
       }
     ]
   }
